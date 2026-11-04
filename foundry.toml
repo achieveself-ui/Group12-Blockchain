@@ -1,0 +1,58 @@
+# ============================================================================
+# DeFi Shield · Foundry 配置（C 的测试基建）
+# 注意：组长文件（统一说明 v2.0 第 3 节）规定主框架为 Hardhat + JavaScript。
+#       本 Foundry 环境仅作为 C 的个人测试基建使用，最终回归仍以
+#       npx hardhat test 的结果为准；请在个人分支使用或先向 A 报备。
+# 初始化：curl -L https://foundry.paradigm.xyz | bash && foundryup
+#         forge install foundry-rs/forge-std --no-commit
+# ============================================================================
+
+[profile.default]
+# B 的合约目录。若在 defi-shield 仓库内使用，改为 src = "contracts"
+# 即可与 B 的 Hardhat 目录共用同一份合约源码（两套工具链互不冲突）。
+src = "src"
+out = "out"
+libs = ["lib"]
+
+# 编译器版本：与 B/E 在 hardhat.config 中固定的 0.8.x 保持一致（0.8+ 内置溢出检查）
+solc = "0.8.24"
+
+optimizer = true
+optimizer_runs = 200
+
+# 失败时输出 revert 原因与 console2 日志（-vv 以上生效）
+verbosity = 3
+
+# ----------------------------------------------------------------------------
+# 模糊测试：对应 test-plan §5.6 INV 系列"随机循环 ≥1000 轮"的要求
+# ----------------------------------------------------------------------------
+[profile.default.fuzz]
+runs = 1000              # 每个 fuzz 用例的随机输入组数
+max_test_rejects = 65536 # vm.assume 拒绝采样的上限
+# seed = "0x1234"        # 固定随机种子：失败时用同一 seed 可复现同一输入序列
+
+# ----------------------------------------------------------------------------
+# 不变量测试（stateful fuzz，handler 模式）：
+# 每轮 = 按随机顺序对 handler 合约做最多 depth 次随机调用，然后检查 invariant_* 函数
+# ----------------------------------------------------------------------------
+[profile.default.invariant]
+runs = 1000
+depth = 64               # 每轮最多调用次数
+fail_on_revert = false   # handler 内部已 try/catch 的业务 revert 不计为不变量失败
+
+# ----------------------------------------------------------------------------
+# CI / 展示前档位：forge test --profile ci
+# ----------------------------------------------------------------------------
+[profile.ci.fuzz]
+runs = 5000
+
+[profile.ci.invariant]
+runs = 2500
+depth = 100
+
+# ----------------------------------------------------------------------------
+# 覆盖率：无专用配置节，命令如下（通过标准见 test-plan §6：行覆盖 ≥85%）
+#   forge coverage --report summary      # 终端摘要
+#   forge coverage --report lcov        # 生成 lcov.info，可用 genhtml 做可视化报告
+# 安全关键函数（deposit / redeem / initialize / pause / unpause / mint / burn）须 100% 覆盖
+# ----------------------------------------------------------------------------
