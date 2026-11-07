@@ -1,0 +1,326 @@
+Command: node hardhat/internal/cli/cli run scripts/b-dev/compare-local.js --no-compile
+Node: v22.16.0
+Exit code: 0
+{
+  "kind": "B development validation, not E deployment delivery",
+  "results": [
+    {
+      "name": "VulnerablePool",
+      "chainId": 31337,
+      "ephemeral": true,
+      "addresses": {
+        "asset": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "pool": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+        "share": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+      },
+      "deploymentTransactions": {
+        "asset": "0x816601878dcf66bc5be3249e3454e604cfdd9c98c67890aa0bb79aae430c01ca",
+        "pool": "0xfd35174639d5f3e65afc670f9914660cd56fdc78d7819cac0f109fb2a2876748",
+        "share": "0xa5a61828bec6f90ec0260037b6d140447605b6a4d7ff27aaa8ccb498603a160d",
+        "initialize": "0x1e373dcc5e7f9dff64060f8cdb6a9a695d1c2655aa3d176377cea5c008da1709"
+      },
+      "rows": [
+        {
+          "step": "initial",
+          "attackerAssets": "20000",
+          "victimAssets": "20000",
+          "attackerShares": "0",
+          "victimShares": "0",
+          "poolAssets": "0",
+          "totalSupply": "0",
+          "cachedPoolBalance": "0",
+          "transactionHash": null,
+          "events": []
+        },
+        {
+          "step": "seed deposit 1000",
+          "attackerAssets": "19000",
+          "victimAssets": "20000",
+          "attackerShares": "1000",
+          "victimShares": "0",
+          "poolAssets": "1000",
+          "totalSupply": "1000",
+          "cachedPoolBalance": "1000",
+          "transactionHash": "0x5270cdca54e7254da0eb3737803d678df7b5f22e6e5b0f6659ff4c8b9a9201f5",
+          "events": [
+            {
+              "name": "Deposited",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "1000",
+                "1000"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "empty pool",
+          "attackerAssets": "20000",
+          "victimAssets": "20000",
+          "attackerShares": "0",
+          "victimShares": "0",
+          "poolAssets": "0",
+          "totalSupply": "0",
+          "cachedPoolBalance": "1000",
+          "transactionHash": "0xa853378527fbd133fdc30bdf5c8bfeb373c20c64bad262b6931870ddd7bfd5eb",
+          "events": [
+            {
+              "name": "Redeemed",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "1000",
+                "1000"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "victim deposit 10000",
+          "attackerAssets": "20000",
+          "victimAssets": "10000",
+          "attackerShares": "0",
+          "victimShares": "10000",
+          "poolAssets": "10000",
+          "totalSupply": "10000",
+          "cachedPoolBalance": "11000",
+          "transactionHash": "0x2b14098a54b889aff2c96063a87ae3592c3024283be8ce6812b5a2f74d515535",
+          "events": [
+            {
+              "name": "Deposited",
+              "args": [
+                "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+                "10000",
+                "10000"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "attacker deposit 16",
+          "attackerAssets": "19984",
+          "victimAssets": "10000",
+          "attackerShares": "115792089237316195423570985008687907853269984665640564039457584007913129628952",
+          "victimShares": "10000",
+          "poolAssets": "10016",
+          "totalSupply": "115792089237316195423570985008687907853269984665640564039457584007913129638952",
+          "cachedPoolBalance": "11016",
+          "transactionHash": "0xf733b3645ab495a20d3444db7859d940470e3d0aa7dde092a39ecc384f778270",
+          "events": [
+            {
+              "name": "Deposited",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "16",
+                "115792089237316195423570985008687907853269984665640564039457584007913129628952"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "attacker redeem all own shares",
+          "attackerAssets": "29999",
+          "victimAssets": "10000",
+          "attackerShares": "0",
+          "victimShares": "10000",
+          "poolAssets": "1",
+          "totalSupply": "10000",
+          "cachedPoolBalance": "11016",
+          "transactionHash": "0xc69eb24fd9da08eacc1f7df1a30467293860425903d4c3be908215256128de7d",
+          "events": [
+            {
+              "name": "Redeemed",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "115792089237316195423570985008687907853269984665640564039457584007913129628952",
+                "10015"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "victim redeem all own shares",
+          "attackerAssets": "29999",
+          "victimAssets": "10001",
+          "attackerShares": "0",
+          "victimShares": "0",
+          "poolAssets": "0",
+          "totalSupply": "0",
+          "cachedPoolBalance": "11016",
+          "transactionHash": "0xd32e3598381798c08d70b63d10ce669aff39a8082c7376dd1b55574e530c17ed",
+          "events": [
+            {
+              "name": "Redeemed",
+              "args": [
+                "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+                "10000",
+                "1"
+              ]
+            }
+          ]
+        }
+      ],
+      "minted": "115792089237316195423570985008687907853269984665640564039457584007913129628952",
+      "attackerProfit": "9999",
+      "victimLoss": "9999"
+    },
+    {
+      "name": "SecurePool",
+      "chainId": 31337,
+      "ephemeral": true,
+      "addresses": {
+        "asset": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "pool": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "share": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
+      },
+      "deploymentTransactions": {
+        "asset": "0x7056d4673f7862df3dc637be92a28b4df21c7d9fd427b9267b13a07daec7806d",
+        "pool": "0x7c0996937a38f230e8323f9bd80da4318d97f69195b060160a172c6ec0f1732e",
+        "share": "0xad37036250f8f21ca33758132ca2430d59b6630e8b057fd02c0be0b1abaa20a6",
+        "initialize": "0x1064986a11c9a99eb2bccc50de213715b7ce3dc38bc73df9401f93152e9fbb2d"
+      },
+      "rows": [
+        {
+          "step": "initial",
+          "attackerAssets": "20000",
+          "victimAssets": "20000",
+          "attackerShares": "0",
+          "victimShares": "0",
+          "poolAssets": "0",
+          "totalSupply": "0",
+          "cachedPoolBalance": null,
+          "transactionHash": null,
+          "events": []
+        },
+        {
+          "step": "seed deposit 1000",
+          "attackerAssets": "19000",
+          "victimAssets": "20000",
+          "attackerShares": "1000",
+          "victimShares": "0",
+          "poolAssets": "1000",
+          "totalSupply": "1000",
+          "cachedPoolBalance": null,
+          "transactionHash": "0xb8d7e6bfeb1b8ab8ad25a346d2e7ac1652fd2083e19c6aee2a7c35348c0b1b17",
+          "events": [
+            {
+              "name": "Deposited",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "1000",
+                "1000"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "empty pool",
+          "attackerAssets": "20000",
+          "victimAssets": "20000",
+          "attackerShares": "0",
+          "victimShares": "0",
+          "poolAssets": "0",
+          "totalSupply": "0",
+          "cachedPoolBalance": null,
+          "transactionHash": "0xea33761270e463ad98d2ce1b8ffb914c546d13439c03b28de2cacde3bc5526db",
+          "events": [
+            {
+              "name": "Redeemed",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "1000",
+                "1000"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "victim deposit 10000",
+          "attackerAssets": "20000",
+          "victimAssets": "10000",
+          "attackerShares": "0",
+          "victimShares": "10000",
+          "poolAssets": "10000",
+          "totalSupply": "10000",
+          "cachedPoolBalance": null,
+          "transactionHash": "0xc6ac26e0983c19c898df3404adce231591e69e97c6c3b54bf491fa045facec58",
+          "events": [
+            {
+              "name": "Deposited",
+              "args": [
+                "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+                "10000",
+                "10000"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "attacker deposit 16",
+          "attackerAssets": "19984",
+          "victimAssets": "10000",
+          "attackerShares": "16",
+          "victimShares": "10000",
+          "poolAssets": "10016",
+          "totalSupply": "10016",
+          "cachedPoolBalance": null,
+          "transactionHash": "0x0a71a9a3f2358c359842835212ff409e7748c931afebd1dda79e2892167bfb9e",
+          "events": [
+            {
+              "name": "Deposited",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "16",
+                "16"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "attacker redeem all own shares",
+          "attackerAssets": "20000",
+          "victimAssets": "10000",
+          "attackerShares": "0",
+          "victimShares": "10000",
+          "poolAssets": "10000",
+          "totalSupply": "10000",
+          "cachedPoolBalance": null,
+          "transactionHash": "0xde8ae36348e2121614fed05a7a4b65fec203d245b1397dacdbb3512d725c63c3",
+          "events": [
+            {
+              "name": "Redeemed",
+              "args": [
+                "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                "16",
+                "16"
+              ]
+            }
+          ]
+        },
+        {
+          "step": "victim redeem all own shares",
+          "attackerAssets": "20000",
+          "victimAssets": "20000",
+          "attackerShares": "0",
+          "victimShares": "0",
+          "poolAssets": "0",
+          "totalSupply": "0",
+          "cachedPoolBalance": null,
+          "transactionHash": "0x93d3a233020c0695312b255825cae1513a35b94401fe630e40c32a0907eb981a",
+          "events": [
+            {
+              "name": "Redeemed",
+              "args": [
+                "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+                "10000",
+                "10000"
+              ]
+            }
+          ]
+        }
+      ],
+      "minted": "16",
+      "attackerProfit": "0",
+      "victimLoss": "0"
+    }
+  ]
+}

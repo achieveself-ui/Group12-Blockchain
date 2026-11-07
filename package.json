@@ -1,0 +1,22 @@
+{
+  "name": "defi-shield",
+  "version": "0.1.0",
+  "private": true,
+  "description": "B contract development validation; local teaching only",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "demo:b": "hardhat run scripts/b-dev/compare-local.js",
+    "validate:b": "node scripts/b-dev/validate.js"
+  },
+  "devDependencies": {
+    "node": "22.16.0",
+    "hardhat": "2.26.3",
+    "@nomicfoundation/hardhat-ethers": "3.0.8",
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.8",
+    "ethers": "6.13.4",
+    "chai": "4.5.0",
+    "solc": "0.8.24"
+  },
+  "dependencies": { "@openzeppelin/contracts": "5.0.2" }
+}
