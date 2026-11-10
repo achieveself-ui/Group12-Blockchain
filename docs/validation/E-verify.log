@@ -1,0 +1,58 @@
+DeFi Shield · E 交付验证记录
+生成时间：2026-11-10（Asia/Shanghai）
+分支：feature/E-deploy（基于 origin/feature/b-contracts c943aa3）
+
+一、环境
+- 系统 Node：v26.13.0（C:\Program Files\nodejs），仅用于执行 npm 本身
+- npm：11.20.0
+- npm scripts 内 node：v22.16.0（node_modules/node，由 package.json 锁定）
+- 依赖安装：registry.npmjs.org 连接超时（ETIMEDOUT），改用 registry.npmjs.org 的镜像 registry.npmmirror.com
+  并设置 replace_registry_host=always、fetch_timeout=120000、fetch_retries=5，`npm ci --no-audit --no-fund` 退出码 0
+
+二、编译
+命令：npm.cmd run compile
+结果：Compiled 17 Solidity files successfully (evm target: paris)
+
+三、测试
+命令：npm.cmd test
+结果：15 passing，1 failing（总耗时约 7 分钟）
+失败项：test/b-dev/regression.test.js "1000 seeded immediate roundtrips restore every tracked balance exactly"
+失败原因：用例内 this.timeout(240000) 超时，不是断言失败
+补充验证：临时把该 suite 超时改为 900000 后单独运行 ——
+  npx hardhat test test/b-dev/regression.test.js --grep "immediate roundtrips"
+  结果：1 passing (761686ms)；随后已把超时还原为 240000
+说明：本机执行同类 1000 轮用例约需 150~760 秒，慢于 B 当时的机器；该用例逻辑本身通过。
+
+四、本地部署
+命令：npm.cmd run deploy:local（前置：npx hardhat node，chainId 31337）
+结果：退出码 0，部署后校验全部通过（initialized / 地址绑定 / owner / 未暂停 / 凭证供应为 0）
+地址：
+  TestToken       0x5FbDB2315678afecb367f032d93F642f64180aa3
+  SecurePool      0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  PoolShareToken  0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+交易哈希：
+  deploy TestToken       0x95428aeb3768d9bfde02a3644ab2c77de394f8f8c7d488288b6d824f2017eaf1
+  deploy SecurePool      0xe37ea23b1de90f4c6f71aa5e8bb0cdb470e128d8c6ab7d304930bd59099b3f97
+  deploy PoolShareToken  0x5723d72f4e518665b117f3306158622cce27fda3d727ddb648553b303d60375f
+  initialize             0x32bc030f8c6319ba873e5a4a33e7a7873e1620837a3971c0a7a9385aa62f7037
+记录文件：docs/validation/E-deploy-local.json
+日志：docs/validation/E-deploy-local.log
+
+五、演示数据
+命令：npm.cmd run demo:setup
+首次运行：3 个演示账户分别 approve + deposit 10000 / 5000 / 2500，池内资产 17500，凭证总量 17500
+重复运行：不再重复 deposit（凭证余额仍为 10000 / 5000 / 2500），仅为补足固定额度执行 mint
+日志：docs/validation/E-demo-setup.log
+
+六、部署安全边界验证
+1. npm.cmd run deploy:sepolia（未配置 .env）
+   结果：退出码 1，报错“缺少 SEPOLIA_RPC_URL（见 .env.example），拒绝在未声明的 RPC 上部署”，未连接网络
+2. npx hardhat run scripts/deploy-sepolia.js --network localhost
+   结果：退出码 1，报错“deploy-sepolia 只允许 --network sepolia，当前 network=localhost”
+3. deploy-sepolia.js 与 deploy-local.js 均只实例化 TestToken / SecurePool / PoolShareToken，
+   不含 VulnerablePool 与 contracts/dev
+
+七、未完成
+- Sepolia 实际部署：缺少 RPC、测试私钥与测试网 ETH，未部署，无地址可核验
+- 前端：D 尚未交付，未涉及
+- 正式安全报告与静态分析：C 负责，未涉及

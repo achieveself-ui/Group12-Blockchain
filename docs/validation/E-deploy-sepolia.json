@@ -1,0 +1,61 @@
+{
+  "kind": "E Sepolia deployment record",
+  "project": "DeFi Shield",
+  "network": "sepolia",
+  "chainId": "11155111",
+  "deployedAt": "2026-11-10T14:52:51.561Z",
+  "deployer": "0xbE0A420cE5e9B56Ae7e3AFb7fF299D17581219E9",
+  "contracts": {
+    "assetToken": {
+      "name": "TestToken",
+      "address": "0x4948A77A5075914B20e1A8450a00c69D27Faab14",
+      "explorer": "https://sepolia.etherscan.io/address/0x4948A77A5075914B20e1A8450a00c69D27Faab14"
+    },
+    "securePool": {
+      "name": "SecurePool",
+      "address": "0xb06f28E8b04F670E19DBCA4Aa2bB59226B7Ae862",
+      "explorer": "https://sepolia.etherscan.io/address/0xb06f28E8b04F670E19DBCA4Aa2bB59226B7Ae862"
+    },
+    "shareToken": {
+      "name": "PoolShareToken",
+      "address": "0xd2De1791A6Eb32b3b40c9E8EB6368CeB663DC353",
+      "explorer": "https://sepolia.etherscan.io/address/0xd2De1791A6Eb32b3b40c9E8EB6368CeB663DC353"
+    }
+  },
+  "transactions": {
+    "deployAssetToken": {
+      "hash": "0xa807908f27ae828195fd6dfad779bf67f75f53d411ea35ba9bcbe0d751eb7918",
+      "explorer": "https://sepolia.etherscan.io/tx/0xa807908f27ae828195fd6dfad779bf67f75f53d411ea35ba9bcbe0d751eb7918"
+    },
+    "deploySecurePool": {
+      "hash": "0x61eeec0c66703d072c92dd977b550e0699bd3f8426fb435a57962a89048851b4",
+      "explorer": "https://sepolia.etherscan.io/tx/0x61eeec0c66703d072c92dd977b550e0699bd3f8426fb435a57962a89048851b4"
+    },
+    "deployShareToken": {
+      "hash": "0x1154d1241597dd53a08e13ec9f905ee1f6c08e76e6cbfd8c4f0be60ad7513e74",
+      "explorer": "https://sepolia.etherscan.io/tx/0x1154d1241597dd53a08e13ec9f905ee1f6c08e76e6cbfd8c4f0be60ad7513e74"
+    },
+    "initialize": {
+      "hash": "0xb2cdd4ef1f37135c9e07581646eed335f6bda25781e954cf50d304228d99e39a",
+      "explorer": "https://sepolia.etherscan.io/tx/0xb2cdd4ef1f37135c9e07581646eed335f6bda25781e954cf50d304228d99e39a"
+    },
+    "demoMint": {
+      "hash": "0xbf7cc3eb2fc13b67294fc2aed238eb48cac7397d25d7b6f3e1476e9351f213a8",
+      "explorer": "https://sepolia.etherscan.io/tx/0xbf7cc3eb2fc13b67294fc2aed238eb48cac7397d25d7b6f3e1476e9351f213a8"
+    }
+  },
+  "verification": {
+    "initialized": true,
+    "assetToken": true,
+    "shareToken": true,
+    "sharePool": true,
+    "owner": true,
+    "notPaused": true,
+    "zeroSupply": true
+  },
+  "notes": [
+    "仅部署修复版白名单三个合约，未部署 VulnerablePool 与 contracts/dev",
+    "测试网资产无真实价值；本记录中的地址与交易可在区块浏览器核验",
+    "测试资产 mint 给部署者 1000000000000000000000000 最小单位，便于前端演示"
+  ]
+}

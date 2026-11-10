@@ -1,0 +1,25 @@
+﻿
+> defi-shield@0.1.0 deploy:local
+> hardhat run scripts/deploy-local.js --network localhost
+
+部署者: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+网络: localhost (chainId 31337)
+
+合约地址
+  TestToken       0x5FbDB2315678afecb367f032d93F642f64180aa3
+  SecurePool      0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  PoolShareToken  0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+
+交易哈希
+  deploy TestToken       0x95428aeb3768d9bfde02a3644ab2c77de394f8f8c7d488288b6d824f2017eaf1
+  deploy SecurePool      0xe37ea23b1de90f4c6f71aa5e8bb0cdb470e128d8c6ab7d304930bd59099b3f97
+  deploy PoolShareToken  0x5723d72f4e518665b117f3306158622cce27fda3d727ddb648553b303d60375f
+  initialize             0x32bc030f8c6319ba873e5a4a33e7a7873e1620837a3971c0a7a9385aa62f7037
+
+演示账户各获得 1000000000000000000000000 最小单位 DST
+  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266  0x34aeec601ec104ff34b2a6b764192e1ef12864acf243618fa83525f88ff0bb6a
+  0x70997970C51812dc3A010C7d01b50e0d17dc79C8  0xba4bb94a266aa5de70b607604e2382b5a8ab48f7c52b74e36f2e30382b0d0e79
+  0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC  0x6ca0d01900183ccf2f5d7c79908927b96c31cea0486e6dbd34fdd1e6b5136a4d
+  0x90F79bf6EB2c4f870365E785982E1f101E93b906  0x68c649b28158684c2d59b4cae6f4c630d30e24b28a8bce83828b4fa24f68aa51
+
+部署记录: D:\Blockchain\Group12-Blockchain\docs\validation\E-deploy-local.json
