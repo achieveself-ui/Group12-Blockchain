@@ -111,7 +111,7 @@ npm.cmd run deploy:sepolia
 
 ## 前端
 
-由 D 负责，当前仓库没有可运行的前端代码。合约地址已整理到 `frontend/src/contracts/addresses.ts`（Sepolia，chainId 11155111），前端接入时直接引用，不要自行复制地址；ABI 取 `artifacts/contracts/<Name>.sol/<Name>.json` 的 `abi` 字段，并校验钱包网络一致。
+暂无
 
 ## 已知限制
 
