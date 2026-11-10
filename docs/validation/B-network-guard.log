@@ -1,0 +1,5 @@
+Command: node hardhat/internal/cli/cli run scripts/b-dev/check-network-guard.js --config scripts/b-dev/guard.config.js --no-compile
+Node: v22.16.0
+Exit code: 0
+PASS: VulnerablePool deployment rejected on in-memory chainId=1 (no public RPC).
+PASS: comparison script rejected in-memory chainId=1.

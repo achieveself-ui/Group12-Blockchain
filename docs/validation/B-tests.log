@@ -1,0 +1,30 @@
+Command: node hardhat/internal/cli/cli test
+Node: v22.16.0
+Exit code: 0
+
+
+  B development: deterministic regression seed 0x5eed
+    √ 1000 mixed operations preserve backing, supply and exact deltas (18030ms)
+    √ 1000 seeded immediate roundtrips restore every tracked balance exactly (50944ms)
+
+  B development: SecurePool and tokens
+    √ owner initializes once; outsider cannot front-run; uninitialized queries work (135ms)
+    √ rejects zero, EOA, identical tokens, wrong pool binding and unsupported decimals (199ms)
+    √ first/subsequent deposits, partial/full redemption, multiuser and immediate roundtrip (206ms)
+    √ zero, missing allowance, insufficient assets/shares and max input revert atomically (170ms)
+    √ only pool may mint/burn receipts; only owner may mint test assets (117ms)
+    √ pause permissions/events/queries, repeated pause errors, resume (205ms)
+    √ donations leave fixed 1:1 intact and receipts remain transferable (114ms)
+    √ isolated confiscation mock: shortfall and underbacking revert without burning (108ms)
+    √ fee-on-transfer and false-return assets are rejected atomically on both directions (171ms)
+    √ token callback reentry is blocked on deposit and redeem (84ms)
+    √ uint256 maximum fully funded roundtrip has no artificial amount limit (43ms)
+
+  B development: LOCAL teaching comparison
+    √ 16-wei stale-cache underflow is derived, and real test assets are lost (73ms)
+    √ same deposit inputs, redeem-all policy: secure version gives only 16 and zero profit (78ms)
+    √ outsider can replace vulnerable asset; equivalent call rejected by secure pool (103ms)
+
+
+  16 passing (1m)
+
